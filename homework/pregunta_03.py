@@ -15,3 +15,20 @@ def pregunta_03():
     [('A', 53), ('B', 36), ('C', 27), ('D', 31), ('E', 67)]
 
     """
+
+    with open("files/input/data.csv", "r") as file:
+        lines = file.readlines()
+
+    letter_sum = {}
+    for line in lines:
+        columns = line.split("\t")
+        letter = columns[0]
+        number = int(columns[1])
+        if letter in letter_sum:
+            letter_sum[letter] += number
+        else:
+            letter_sum[letter] = number
+
+    sorted_letter_sum = sorted(letter_sum.items())
+
+    return sorted_letter_sum
